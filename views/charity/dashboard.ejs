@@ -1,0 +1,567 @@
+<!-- Dashboard Header -->
+<div class="dashboard-header mb-4">
+    <div class="row align-items-center">
+        <div class="col-md-8">
+            <div class="d-flex align-items-center mb-2">
+                <div class="avatar-circle bg-primary text-white me-3">
+                    <i class="fas fa-hand-holding-heart"></i>
+                </div>
+                <div>
+                    <h2 class="mb-1">Welcome back, <%= user.name %></h2>
+                    <p class="text-muted mb-0">Manage your food orders and view available donations</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="row g-3">
+                <div class="col-6">
+                    <div class="card bg-primary text-white h-100">
+                        <div class="card-body py-3">
+                            <div class="d-flex align-items-center">
+                                <div class="stat-icon me-3">
+                                    <i class="fas fa-shopping-cart"></i>
+                                </div>
+                                <div>
+                                    <h6 class="card-title mb-1">Active Orders</h6>
+                                    <h3 class="mb-0"><%= myOrders.filter(order => order.status === 'pending' || order.status === 'accepted').length %></h3>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="card bg-success text-white h-100">
+                        <div class="card-body py-3">
+                            <div class="d-flex align-items-center">
+                                <div class="stat-icon me-3">
+                                    <i class="fas fa-utensils"></i>
+                                </div>
+                                <div>
+                                    <h6 class="card-title mb-1">Available Items</h6>
+                                    <h3 class="mb-0"><%= availableFood.length %></h3>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row g-4">
+    <!-- Available Food Items -->
+    <div class="col-md-8">
+        <div class="card shadow-sm border-0">
+            <div class="card-header bg-white py-3">
+                <div class="d-flex justify-content-between align-items-center">
+                    <div class="d-flex align-items-center">
+                        <i class="fas fa-list-alt text-primary me-2"></i>
+                        <h4 class="mb-0">Available Food Items</h4>
+                    </div>
+                    <div class="d-flex align-items-center">
+                        <span class="badge bg-primary rounded-pill me-2"><%= availableFood.length %> items</span>
+                        <button class="btn btn-outline-primary btn-sm" onclick="refreshFoodItems()">
+                            <i class="fas fa-sync-alt"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="card-body p-0">
+                <% if (availableFood.length === 0) { %>
+                    <div class="text-center py-5">
+                        <div class="empty-state">
+                            <i class="fas fa-utensils fa-3x text-muted mb-3"></i>
+                            <h5 class="text-muted">No food items available</h5>
+                            <p class="text-muted">Check back later for new donations</p>
+                        </div>
+                    </div>
+                <% } else { %>
+                    <div class="table-responsive">
+                        <table class="table table-hover align-middle mb-0">
+                            <thead class="bg-light">
+                                <tr>
+                                    <th class="border-0">Doners</th>
+                                    <th class="border-0">Item</th>
+                                    <th class="border-0">Quantity</th>
+                                    <th class="border-0">Unit</th>
+                                    <th class="border-0">Expiry</th>
+                                    <th class="border-0">Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <% availableFood.forEach(item => { %>
+                                    <tr>
+                                        <td>
+                                            <div class="d-flex align-items-center">
+                                                <div class="restaurant-icon me-2">
+                                                    <i class="fas fa-store text-primary"></i>
+                                                </div>
+                                                <div>
+                                                    <div class="fw-medium"><%= item.restaurant.restaurantName %></div>
+                                                    <small class="text-muted">ID: <%= item.restaurant._id %></small>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="fw-medium"><%= item.name %></div>
+                                            <small class="text-muted">Added: <%= new Date(item.createdAt).toLocaleDateString() %></small>
+                                        </td>
+                                        <td>
+                                            <span class="badge bg-info rounded-pill"><%= item.quantity %></span>
+                                        </td>
+                                        <td><%= item.unit %></td>
+                                        <td>
+                                            <span class="badge bg-<%= new Date(item.expiryDate) < new Date() ? 'danger' : 'success' %> rounded-pill">
+                                                <%= new Date(item.expiryDate).toLocaleDateString() %>
+                                            </span>
+                                        </td>
+                                        <td>
+                                            <button class="btn btn-primary btn-sm order-item rounded-pill px-3" 
+                                                data-id="<%= item._id %>"
+                                                data-name="<%= item.name %>"
+                                                data-quantity="<%= item.quantity %>"
+                                                data-unit="<%= item.unit %>"
+                                                data-restaurant="<%= item.restaurant._id %>">
+                                                <i class="fas fa-shopping-cart me-1"></i> Order
+                                            </button>
+                                        </td>
+                                    </tr>
+                                <% }); %>
+                            </tbody>
+                        </table>
+                    </div>
+                <% } %>
+            </div>
+        </div>
+    </div>
+
+    <!-- My Orders -->
+    <div class="col-md-4">
+        <div class="card shadow-sm border-0">
+            <div class="card-header bg-white py-3">
+                <div class="d-flex justify-content-between align-items-center">
+                    <div class="d-flex align-items-center">
+                        <i class="fas fa-clipboard-list text-primary me-2"></i>
+                        <h4 class="mb-0">My Orders</h4>
+                    </div>
+                    <span class="badge bg-primary rounded-pill"><%= myOrders.length %> orders</span>
+                </div>
+            </div>
+            <div class="card-body p-0">
+                <% if (myOrders.length === 0) { %>
+                    <div class="text-center py-5">
+                        <div class="empty-state">
+                            <i class="fas fa-clipboard-list fa-3x text-muted mb-3"></i>
+                            <h5 class="text-muted">No orders placed</h5>
+                            <p class="text-muted">Start by ordering available food items</p>
+                        </div>
+                    </div>
+                <% } else { %>
+                    <!-- Order Status Tabs -->
+                    <ul class="nav nav-tabs nav-tabs-custom" role="tablist">
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#pending-tab" type="button" role="tab">
+                                Pending
+                                <span class="badge bg-warning rounded-pill ms-2"><%= myOrders.filter(order => order.status === 'pending').length %></span>
+                            </button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" data-bs-toggle="tab" data-bs-target="#accepted-tab" type="button" role="tab">
+                                Accepted
+                                <span class="badge bg-success rounded-pill ms-2"><%= myOrders.filter(order => order.status === 'accepted').length %></span>
+                            </button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" data-bs-toggle="tab" data-bs-target="#rejected-tab" type="button" role="tab">
+                                Rejected
+                                <span class="badge bg-danger rounded-pill ms-2"><%= myOrders.filter(order => order.status === 'rejected').length %></span>
+                            </button>
+                        </li>
+                    </ul>
+
+                    <!-- Tab Content -->
+                    <div class="tab-content">
+                        <!-- Pending Orders -->
+                        <div class="tab-pane fade show active" id="pending-tab" role="tabpanel">
+                            <div class="list-group list-group-flush">
+                                <% const pendingOrders = myOrders.filter(order => order.status === 'pending'); %>
+                                <% if (pendingOrders.length === 0) { %>
+                                    <div class="text-center py-4">
+                                        <p class="text-muted mb-0">No pending orders</p>
+                                    </div>
+                                <% } else { %>
+                                    <% pendingOrders.forEach(order => { %>
+                                        <div class="list-group-item border-0">
+                                            <div class="d-flex justify-content-between align-items-start mb-2">
+                                                <div>
+                                                    <h6 class="mb-1">Order #<%= order._id %></h6>
+                                                    <small class="text-muted">Placed: <%= new Date(order.createdAt).toLocaleDateString() %></small>
+                                                </div>
+                                                <span class="badge bg-warning rounded-pill">pending</span>
+                                            </div>
+                                            <div class="order-details">
+                                                <p class="mb-1">
+                                                    <i class="fas fa-store text-primary me-2"></i>
+                                                    <%= order.restaurant.restaurantName %>
+                                                </p>
+                                                <p class="mb-1">
+                                                    <i class="fas fa-clock text-primary me-2"></i>
+                                                    <%= new Date(order.pickupTime).toLocaleString() %>
+                                                </p>
+                                                <p class="mb-1">
+                                                    <i class="fas fa-map-marker-alt text-primary me-2"></i>
+                                                    <%= order.pickupAddress %>
+                                                </p>
+                                            </div>
+                                            <button type="button" class="btn btn-outline-danger btn-sm rounded-pill cancel-order-btn" data-order-id="<%= order._id %>">
+                                                <i class="fas fa-times me-1"></i> Cancel Order
+                                            </button>
+                                        </div>
+                                    <% }); %>
+                                <% } %>
+                            </div>
+                        </div>
+
+                        <!-- Accepted Orders -->
+                        <div class="tab-pane fade" id="accepted-tab" role="tabpanel">
+                            <div class="list-group list-group-flush">
+                                <% const acceptedOrders = myOrders.filter(order => order.status === 'accepted'); %>
+                                <% if (acceptedOrders.length === 0) { %>
+                                    <div class="text-center py-4">
+                                        <p class="text-muted mb-0">No accepted orders</p>
+                                    </div>
+                                <% } else { %>
+                                    <% acceptedOrders.forEach(order => { %>
+                                        <div class="list-group-item border-0">
+                                            <div class="d-flex justify-content-between align-items-start mb-2">
+                                                <div>
+                                                    <h6 class="mb-1">Order #<%= order._id %></h6>
+                                                    <small class="text-muted">Placed: <%= new Date(order.createdAt).toLocaleDateString() %></small>
+                                                </div>
+                                                <span class="badge bg-success rounded-pill">accepted</span>
+                                            </div>
+                                            <div class="order-details">
+                                                <p class="mb-1">
+                                                    <i class="fas fa-store text-primary me-2"></i>
+                                                    <%= order.restaurant.restaurantName %>
+                                                </p>
+                                                <p class="mb-1">
+                                                    <i class="fas fa-clock text-primary me-2"></i>
+                                                    <%= new Date(order.pickupTime).toLocaleString() %>
+                                                </p>
+                                                <p class="mb-1">
+                                                    <i class="fas fa-map-marker-alt text-primary me-2"></i>
+                                                    <%= order.pickupAddress %>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    <% }); %>
+                                <% } %>
+                            </div>
+                        </div>
+
+                        <!-- Rejected Orders -->
+                        <div class="tab-pane fade" id="rejected-tab" role="tabpanel">
+                            <div class="list-group list-group-flush">
+                                <% const rejectedOrders = myOrders.filter(order => order.status === 'rejected'); %>
+                                <% if (rejectedOrders.length === 0) { %>
+                                    <div class="text-center py-4">
+                                        <p class="text-muted mb-0">No rejected orders</p>
+                                    </div>
+                                <% } else { %>
+                                    <% rejectedOrders.forEach(order => { %>
+                                        <div class="list-group-item border-0">
+                                            <div class="d-flex justify-content-between align-items-start mb-2">
+                                                <div>
+                                                    <h6 class="mb-1">Order #<%= order._id %></h6>
+                                                    <small class="text-muted">Placed: <%= new Date(order.createdAt).toLocaleDateString() %></small>
+                                                </div>
+                                                <span class="badge bg-danger rounded-pill">rejected</span>
+                                            </div>
+                                            <div class="order-details">
+                                                <p class="mb-1">
+                                                    <i class="fas fa-store text-primary me-2"></i>
+                                                    <%= order.restaurant.restaurantName %>
+                                                </p>
+                                                <p class="mb-1">
+                                                    <i class="fas fa-clock text-primary me-2"></i>
+                                                    <%= new Date(order.pickupTime).toLocaleString() %>
+                                                </p>
+                                                <p class="mb-1">
+                                                    <i class="fas fa-map-marker-alt text-primary me-2"></i>
+                                                    <%= order.pickupAddress %>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    <% }); %>
+                                <% } %>
+                            </div>
+                        </div>
+                    </div>
+                <% } %>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Order Modal -->
+<div class="modal fade" id="orderModal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content border-0 shadow">
+            <div class="modal-header border-0 pb-0">
+                <div class="d-flex align-items-center">
+                    <div class="modal-icon bg-primary text-white rounded-circle me-2">
+                        <i class="fas fa-shopping-cart"></i>
+                    </div>
+                    <h5 class="modal-title">Place Order</h5>
+                </div>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <form id="orderForm" action="/charity/order" method="POST">
+                    <input type="hidden" name="restaurant" id="restaurantId">
+                    <div class="mb-4">
+                        <label class="form-label">Item</label>
+                        <input type="text" class="form-control" id="itemName" readonly>
+                    </div>
+                    <div class="mb-4">
+                        <label for="orderQuantity" class="form-label">Quantity</label>
+                        <div class="input-group">
+                            <input type="number" class="form-control" id="orderQuantity" name="items[0][quantity]" required min="1">
+                            <span class="input-group-text" id="unit"></span>
+                        </div>
+                        <small class="text-muted">Available: <span id="availableQuantity"></span> <span id="unit"></span></small>
+                    </div>
+                    <input type="hidden" name="items[0][foodItem]" id="foodItemId">
+                    <div class="mb-4">
+                        <label for="pickupTime" class="form-label">Pickup Time</label>
+                        <input type="datetime-local" class="form-control" id="pickupTime" name="pickupTime" required>
+                    </div>
+                    <div class="mb-4">
+                        <label for="pickupAddress" class="form-label">Pickup Address</label>
+                        <textarea class="form-control" id="pickupAddress" name="pickupAddress" required rows="3"></textarea>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer border-0">
+                <button type="button" class="btn btn-light rounded-pill" data-bs-dismiss="modal">Close</button>
+                <button type="submit" form="orderForm" class="btn btn-primary rounded-pill">
+                    <i class="fas fa-check me-1"></i> Place Order
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Cancel Order Modal -->
+<div class="modal fade" id="cancelOrderModal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content border-0 shadow">
+            <div class="modal-header border-0 pb-0">
+                <div class="d-flex align-items-center">
+                    <div class="modal-icon bg-danger text-white rounded-circle me-2">
+                        <i class="fas fa-times"></i>
+                    </div>
+                    <h5 class="modal-title">Cancel Order</h5>
+                </div>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <form id="cancelOrderForm" method="POST">
+                    <div class="mb-4">
+                        <label for="cancelReason" class="form-label">Cancellation Reason (Optional)</label>
+                        <textarea class="form-control" id="cancelReason" name="reason" rows="3" placeholder="Please provide a reason for cancellation..."></textarea>
+                    </div>
+                    <div class="alert alert-warning">
+                        <i class="fas fa-exclamation-triangle me-2"></i>
+                        This action cannot be undone. The food items will be returned to the Doner's inventory.
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer border-0">
+                <button type="button" class="btn btn-light rounded-pill" data-bs-dismiss="modal">Close</button>
+                <button type="submit" form="cancelOrderForm" class="btn btn-danger rounded-pill">
+                    <i class="fas fa-times me-1"></i> Cancel Order
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+.avatar-circle {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+}
+
+.stat-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+}
+
+.restaurant-icon {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: rgba(13, 110, 253, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-icon {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+}
+
+.empty-state {
+    padding: 2rem;
+}
+
+.table th {
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    letter-spacing: 0.5px;
+}
+
+.order-details p {
+    font-size: 0.9rem;
+}
+
+.badge {
+    font-weight: 500;
+    padding: 0.5em 0.75em;
+}
+
+.btn {
+    font-weight: 500;
+}
+
+.card {
+    border-radius: 1rem;
+    overflow: hidden;
+}
+
+.card-header {
+    border-bottom: 1px solid rgba(0,0,0,.05);
+}
+
+.list-group-item {
+    padding: 1.25rem;
+}
+
+.list-group-item:hover {
+    background-color: rgba(0,0,0,.02);
+}
+
+.form-control {
+    border-radius: 0.5rem;
+    padding: 0.75rem 1rem;
+    border: 1px solid rgba(0,0,0,.1);
+}
+
+.form-control:focus {
+    border-color: #0d6efd;
+    box-shadow: 0 0 0 0.25rem rgba(13,110,253,.15);
+}
+
+.input-group-text {
+    border-radius: 0 0.5rem 0.5rem 0;
+    background-color: #f8f9fa;
+    border: 1px solid rgba(0,0,0,.1);
+}
+
+.nav-tabs-custom {
+    border-bottom: 1px solid rgba(0,0,0,.05);
+    padding: 0.5rem 1rem 0;
+}
+
+.nav-tabs-custom .nav-link {
+    border: none;
+    color: #6c757d;
+    padding: 0.5rem 1rem;
+    font-weight: 500;
+    position: relative;
+}
+
+.nav-tabs-custom .nav-link.active {
+    color: #0d6efd;
+}
+
+.nav-tabs-custom .nav-link.active::after {
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background-color: #0d6efd;
+}
+
+.nav-tabs-custom .nav-link:hover {
+    color: #0d6efd;
+    border: none;
+}
+
+.tab-content {
+    max-height: 600px;
+    overflow-y: auto;
+}
+
+.alert {
+    border: none;
+    border-radius: 0.5rem;
+}
+
+.alert-warning {
+    background-color: rgba(255, 193, 7, 0.1);
+    color: #856404;
+}
+</style>
+
+<script>
+document.querySelectorAll('.order-item').forEach(button => {
+    button.addEventListener('click', function() {
+        const modal = new bootstrap.Modal(document.getElementById('orderModal'));
+        document.getElementById('restaurantId').value = this.dataset.restaurant;
+        document.getElementById('itemName').value = this.dataset.name;
+        document.getElementById('availableQuantity').textContent = this.dataset.quantity;
+        document.getElementById('unit').textContent = this.dataset.unit;
+        document.getElementById('foodItemId').value = this.dataset.id;
+        document.getElementById('orderQuantity').max = this.dataset.quantity;
+        modal.show();
+    });
+});
+
+function refreshFoodItems() {
+    location.reload();
+}
+
+document.querySelectorAll('.cancel-order-btn').forEach(button => {
+    button.addEventListener('click', function(e) {
+        e.preventDefault();
+        const orderId = this.dataset.orderId;
+        const modal = new bootstrap.Modal(document.getElementById('cancelOrderModal'));
+        const form = document.getElementById('cancelOrderForm');
+        form.action = `/charity/order/cancel/${orderId}`;
+        modal.show();
+    });
+});
+</script>

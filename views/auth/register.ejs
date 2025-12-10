@@ -1,0 +1,131 @@
+<!-- Font Awesome -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+<div class="min-vh-100 d-flex align-items-center bg-light py-5">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-10">
+                <div class="card border-0 shadow-lg rounded-3">
+                    <div class="card-body p-5">
+                        <div class="text-center mb-4">
+                            <h2 class="fw-bold text-primary mb-1">Choose Your Role</h2>
+                            <p class="text-muted">Select how you want to make a difference</p>
+                        </div>
+
+                        <% if (typeof errors !== 'undefined' && errors.length > 0) { %>
+                            <div class="alert alert-danger alert-dismissible fade show">
+                                <% errors.forEach(error => { %>
+                                    <p class="mb-0 small"><%= error.msg %></p>
+                                <% }); %>
+                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                            </div>
+                        <% } %>
+
+                        <div class="row g-4">
+                            <!-- Donation Organisation Manager Card -->
+                            <div class="col-md-6">
+                                <div class="card h-100 border-0 shadow-sm hover-card">
+                                    <div class="card-body p-4">
+                                        <div class="text-center mb-4">
+                                            <div class="icon-circle bg-primary bg-opacity-10 mb-3">
+                                                <i class="fas fa-utensils text-primary"></i>
+                                            </div>
+                                            <h4 class="fw-bold">Donation Organisation Manager</h4>
+                                            <p class="text-muted">Share surplus food to make a positive impact</p>
+                                        </div>
+                                        <ul class="list-unstyled mb-4">
+                                            <li class="mb-2">
+                                                <i class="fas fa-check-circle text-primary me-2"></i>
+                                                <span>Post available food items</span>
+                                            </li>
+                                            <li class="mb-2">
+                                                <i class="fas fa-check-circle text-primary me-2"></i>
+                                                <span>Manage donations efficiently</span>
+                                            </li>
+                                            <li class="mb-2">
+                                                <i class="fas fa-check-circle text-primary me-2"></i>
+                                                <span>Track your social impact</span>
+                                            </li>
+                                        </ul>
+                                        <div class="d-grid">
+                                            <a href="/auth/register-restaurant" class="btn btn-primary py-3 fw-semibold">Register as Donation Organisation</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Charity Manager Card -->
+                            <div class="col-md-6">
+                                <div class="card h-100 border-0 shadow-sm hover-card">
+                                    <div class="card-body p-4">
+                                        <div class="text-center mb-4">
+                                            <div class="icon-circle bg-success bg-opacity-10 mb-3">
+                                                <i class="fas fa-hands-helping text-success"></i>
+                                            </div>
+                                            <h4 class="fw-bold">Charity Manager</h4>
+                                            <p class="text-muted">Connect with donors and help those in need</p>
+                                        </div>
+                                        <ul class="list-unstyled mb-4">
+                                            <li class="mb-2">
+                                                <i class="fas fa-check-circle text-success me-2"></i>
+                                                <span>Access available donations</span>
+                                            </li>
+                                            <li class="mb-2">
+                                                <i class="fas fa-check-circle text-success me-2"></i>
+                                                <span>Coordinate pickups easily</span>
+                                            </li>
+                                            <li class="mb-2">
+                                                <i class="fas fa-check-circle text-success me-2"></i>
+                                                <span>Monitor distribution impact</span>
+                                            </li>
+                                        </ul>
+                                        <div class="d-grid">
+                                            <a href="/auth/register-charity" class="btn btn-success py-3 fw-semibold">Register as Charity</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mt-4 text-center">
+                            <p class="text-muted mb-0">Already have an account? <a href="/auth/login" class="text-primary text-decoration-none fw-semibold">Sign In</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+.icon-circle {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1rem;
+}
+
+.icon-circle i {
+    font-size: 28px;
+}
+
+.hover-card {
+    transition: all 0.3s ease;
+}
+
+.hover-card:hover {
+    transform: translateY(-5px);
+}
+
+.btn {
+    transition: all 0.3s ease;
+}
+
+.btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+</style> 

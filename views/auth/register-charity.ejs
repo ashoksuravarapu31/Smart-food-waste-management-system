@@ -1,0 +1,183 @@
+<!-- Font Awesome -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+<div class="min-vh-100 d-flex align-items-center bg-light py-5">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card border-0 shadow-lg rounded-3">
+                    <div class="card-body p-5">
+                        <div class="text-center mb-4">
+                            <div class="icon-circle bg-success bg-opacity-10 mb-3">
+                                <i class="fas fa-hands-helping text-success"></i>
+                            </div>
+                            <h2 class="fw-bold text-success mb-1">Charity Registration</h2>
+                            <p class="text-muted">Join our network of food distributors</p>
+                        </div>
+
+                        <% if (typeof errors !== 'undefined' && errors.length > 0) { %>
+                            <div class="alert alert-danger alert-dismissible fade show">
+                                <% errors.forEach(error => { %>
+                                    <p class="mb-0 small"><%= error.msg %></p>
+                                <% }); %>
+                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                            </div>
+                        <% } %>
+
+                        <form action="/auth/register" method="POST" class="needs-validation" novalidate>
+                            <input type="hidden" name="role" value="charity">
+                            
+                            <div class="row g-4">
+                                <div class="col-md-6">
+                                    <label for="name" class="form-label text-muted small fw-semibold">Charity Name</label>
+                                    <div class="input-group">
+                                        <span class="input-group-text bg-white border-end-0">
+                                            <i class="fas fa-building text-muted"></i>
+                                        </span>
+                                        <input type="text" class="form-control border-start-0 ps-0" id="name" name="name" 
+                                            value="<%= typeof name !== 'undefined' ? name : '' %>" 
+                                            placeholder="Enter charity name" required>
+                                    </div>
+                                    <div class="invalid-feedback">Please enter your charity name.</div>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="email" class="form-label text-muted small fw-semibold">Email Address</label>
+                                    <div class="input-group">
+                                        <span class="input-group-text bg-white border-end-0">
+                                            <i class="fas fa-envelope text-muted"></i>
+                                        </span>
+                                        <input type="email" class="form-control border-start-0 ps-0" id="email" name="email" 
+                                            value="<%= typeof email !== 'undefined' ? email : '' %>" 
+                                            placeholder="Enter email address" required>
+                                    </div>
+                                    <div class="invalid-feedback">Please enter a valid email address.</div>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="phone" class="form-label text-muted small fw-semibold">Phone Number</label>
+                                    <div class="input-group">
+                                        <span class="input-group-text bg-white border-end-0">
+                                            <i class="fas fa-phone text-muted"></i>
+                                        </span>
+                                        <input type="tel" class="form-control border-start-0 ps-0" id="phone" name="phone" 
+                                            value="<%= typeof phone !== 'undefined' ? phone : '' %>" 
+                                            placeholder="Enter phone number" required>
+                                    </div>
+                                    <div class="invalid-feedback">Please enter your phone number.</div>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="address" class="form-label text-muted small fw-semibold">Charity Address</label>
+                                    <div class="input-group">
+                                        <span class="input-group-text bg-white border-end-0">
+                                            <i class="fas fa-map-marker-alt text-muted"></i>
+                                        </span>
+                                        <input type="text" class="form-control border-start-0 ps-0" id="address" name="address" 
+                                            value="<%= typeof address !== 'undefined' ? address : '' %>" 
+                                            placeholder="Enter charity address" required>
+                                    </div>
+                                    <div class="invalid-feedback">Please enter your charity address.</div>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="password" class="form-label text-muted small fw-semibold">Password</label>
+                                    <div class="input-group">
+                                        <span class="input-group-text bg-white border-end-0">
+                                            <i class="fas fa-lock text-muted"></i>
+                                        </span>
+                                        <input type="password" class="form-control border-start-0 ps-0" id="password" name="password" 
+                                            placeholder="Create password" required>
+                                    </div>
+                                    <div class="invalid-feedback">Please enter a password.</div>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="password2" class="form-label text-muted small fw-semibold">Confirm Password</label>
+                                    <div class="input-group">
+                                        <span class="input-group-text bg-white border-end-0">
+                                            <i class="fas fa-lock text-muted"></i>
+                                        </span>
+                                        <input type="password" class="form-control border-start-0 ps-0" id="password2" name="password2" 
+                                            placeholder="Confirm password" required>
+                                    </div>
+                                    <div class="invalid-feedback">Please confirm your password.</div>
+                                </div>
+                            </div>
+
+                            <div class="d-grid gap-2 mt-4">
+                                <button type="submit" class="btn btn-success py-3 fw-semibold">Create Account</button>
+                                <a href="/auth/register" class="btn btn-light py-3">Back to Role Selection</a>
+                            </div>
+                        </form>
+
+                        <div class="mt-4 text-center">
+                            <p class="text-muted mb-0">Already have an account? <a href="/auth/login" class="text-success text-decoration-none fw-semibold">Sign In</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+.icon-circle {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.icon-circle i {
+    font-size: 28px;
+}
+
+.form-control:focus, .input-group-text {
+    box-shadow: none;
+    border-color: #dee2e6;
+}
+
+.input-group-text {
+    border-right: none;
+}
+
+.form-control {
+    border-left: none;
+}
+
+.btn {
+    transition: all 0.3s ease;
+}
+
+.btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(40, 167, 69, 0.15);
+}
+</style>
+
+<script>
+// Form validation
+(function () {
+    'use strict'
+    var forms = document.querySelectorAll('.needs-validation')
+    Array.prototype.slice.call(forms).forEach(function (form) {
+        form.addEventListener('submit', function (event) {
+            if (!form.checkValidity()) {
+                event.preventDefault()
+                event.stopPropagation()
+            }
+            
+            // Check if passwords match
+            const password = document.getElementById('password')
+            const password2 = document.getElementById('password2')
+            if (password.value !== password2.value) {
+                event.preventDefault()
+                event.stopPropagation()
+                password2.setCustomValidity('Passwords do not match')
+            } else {
+                password2.setCustomValidity('')
+            }
+
+            form.classList.add('was-validated')
+        }, false)
+    })
+})()
+</script> 
