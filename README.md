@@ -190,7 +190,7 @@ Below are the key UI pages of the **Smart Food Waste Management System**.
 
 ---
 
-## ⏳ Order Pending Status  
-![Order Pending](screenshots/approval.jpg)
+## ⏳ Pending status for approval from admin after registering for Donor and Charity profiles
+![Order Pending](screenshots/pending status.jpg)
 
 ---
