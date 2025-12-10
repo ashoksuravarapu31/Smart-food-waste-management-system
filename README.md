@@ -155,6 +155,16 @@ Below are the key UI pages of the **Smart Food Waste Management System**.
 
 ---
 
+## 🎭 Role Selection  
+![Role Selection](screenshots/role-selection.jpg)
+
+---
+
+## Donor Registration 
+![Current Inventory](screenshots/donor-registration.jpg)
+
+---
+
 ## 🍽️ Donor (Restaurant) Dashboard  
 ![Donor Dashboard](screenshots/donor-dashboard.jpg)
 
@@ -165,13 +175,13 @@ Below are the key UI pages of the **Smart Food Waste Management System**.
 
 ---
 
-## Donor Registration 
-![Current Inventory](screenshots/donor-registration.jpg)
+## Charity Registration 
+![Current Inventory](screenshots/charity-registration.jpg)
 
 ---
 
-## Charity Registration 
-![Current Inventory](screenshots/charity-registration.jpg)
+## 🧍 Charity Dashboard  
+![Charity Dashboard](screenshots/charity-dashboard.jpg)
 
 ---
 
@@ -181,17 +191,6 @@ Below are the key UI pages of the **Smart Food Waste Management System**.
 ---
 
 ## ⏳ Order Pending Status  
-![Order Pending](screenshots/order-pending.jpg)
+![Order Pending](screenshots/approval.jpg)
 
 ---
-
-## 🧍 Charity Dashboard  
-![Charity Dashboard](screenshots/charity-dashboard.jpg)
-
----
-
-## 🎭 Role Selection  
-![Role Selection](screenshots/role-selection.jpg)
-
----
-
