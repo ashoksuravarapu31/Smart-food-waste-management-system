@@ -135,14 +135,13 @@ MIT License
 Below are the key UI pages of the **Smart Food Waste Management System**.
 
 ---
-
-## 🔐 Login Page  
-![Login Page](screenshots/login.jpg)
+## 🏠 Home Page (Hero Section)  
+![Home Page](screenshots/home.jpg)
 
 ---
 
-## 🏠 Home Page (Hero Section)  
-![Home Page](screenshots/home.jpg)
+## 🔐 Login Page  
+![Login Page](screenshots/login.jpg)
 
 ---
 
@@ -166,8 +165,13 @@ Below are the key UI pages of the **Smart Food Waste Management System**.
 
 ---
 
-## 📦 Current Inventory  
-![Current Inventory](screenshots/inventory.jpg)
+## Donor Registration 
+![Current Inventory](screenshots/donor-registration.jpg)
+
+---
+
+## Charity Registration 
+![Current Inventory](screenshots/charity-registration.jpg)
 
 ---
 
