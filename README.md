@@ -128,3 +128,29 @@ Aspiring Full-Stack / Backend Developer
 ## 📄 License
 
 MIT License
+
+##📸 Screenshots
+
+Below are the main UI pages of the Smart Food Waste Management System.
+
+🔐 Login Page
+
+🏠 Home Page (Hero Section)
+
+👮 Admin Dashboard
+
+📝 Admin – Approvals
+
+🧑‍🍳 Donor (Restaurant) Dashboard
+
+🍱 Add Food Item
+
+📦 Current Inventory
+
+🛒 Charity Food Request Page
+
+⏳ Order Pending Status
+
+🏥 Charity Dashboard
+
+🧩 Role Selection
