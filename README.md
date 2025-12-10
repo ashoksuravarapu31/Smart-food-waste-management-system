@@ -161,7 +161,7 @@ Below are the key UI pages of the **Smart Food Waste Management System**.
 ---
 
 ## Donor Registration 
-![Current Inventory](screenshots/donor-registration.jpg)
+![Donor Registration](screenshots/donor-registration.jpg)
 
 ---
 
@@ -176,7 +176,7 @@ Below are the key UI pages of the **Smart Food Waste Management System**.
 ---
 
 ## Charity Registration 
-![Current Inventory](screenshots/charity-registration.jpg)
+![Charity Registration](screenshots/charity-registration.jpg)
 
 ---
 
@@ -191,6 +191,6 @@ Below are the key UI pages of the **Smart Food Waste Management System**.
 ---
 
 ## ⏳ Pending status for approval from admin after registering for Donor and Charity profiles
-![Order Pending](screenshots/pending status.jpg)
+![Pending status](screenshots/Pending-status.jpg)
 
 ---
