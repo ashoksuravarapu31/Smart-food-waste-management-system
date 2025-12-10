@@ -129,28 +129,65 @@ Aspiring Full-Stack / Backend Developer
 
 MIT License
 
-##📸 Screenshots
+---
 
-Below are the main UI pages of the Smart Food Waste Management System.
+# 📸 Screenshots  
+Below are the key UI pages of the **Smart Food Waste Management System**.
 
-🔐 Login Page
+---
 
-🏠 Home Page (Hero Section)
+## 🔐 Login Page  
+![Login Page](screenshots/login.jpg)
 
-👮 Admin Dashboard
+---
 
-📝 Admin – Approvals
+## 🏠 Home Page (Hero Section)  
+![Home Page](screenshots/home.jpg)
 
-🧑‍🍳 Donor (Restaurant) Dashboard
+---
 
-🍱 Add Food Item
+## 🧑‍💼 Admin Dashboard  
+![Admin Dashboard](screenshots/admin-dashboard.jpg)
 
-📦 Current Inventory
+---
 
-🛒 Charity Food Request Page
+## 🧾 Admin – Approvals  
+![Admin Approvals](screenshots/admin-approvals.jpg)
 
-⏳ Order Pending Status
+---
 
-🏥 Charity Dashboard
+## 🍽️ Donor (Restaurant) Dashboard  
+![Donor Dashboard](screenshots/donor-dashboard.jpg)
 
-🧩 Role Selection
+---
+
+## ➕ Add Food Item  
+![Add Food Item](screenshots/add-food.jpg)
+
+---
+
+## 📦 Current Inventory  
+![Current Inventory](screenshots/inventory.jpg)
+
+---
+
+## 🛒 Charity Food Request Page  
+![Charity Request](screenshots/charity-request.jpg)
+
+---
+
+## ⏳ Order Pending Status  
+![Order Pending](screenshots/order-pending.jpg)
+
+---
+
+## 🧍 Charity Dashboard  
+![Charity Dashboard](screenshots/charity-dashboard.jpg)
+
+---
+
+## 🎭 Role Selection  
+![Role Selection](screenshots/role-selection.jpg)
+
+---
+
