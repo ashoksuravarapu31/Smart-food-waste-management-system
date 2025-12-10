@@ -120,10 +120,10 @@ Mobile app
 Location-based donation matching
 
 ## 👨‍💻 Developed By
+**Ashok Suravarapu**  
+BCA Graduate (Fresher)  
+Aspiring Full-Stack / Backend Developer
 
-Ashok Suravarapu
-BCA-A, VI Semester
-Guided by Dr. Abadhan Ranganath
 
 ## 📄 License
 
