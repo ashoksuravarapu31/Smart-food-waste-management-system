@@ -1,101 +1,149 @@
-# Food Management System
+🚀 Smart Food Waste Management System
+A Blockchain-Integrated Solution to Reduce Food Waste & Support Charities
 
-A web application that connects restaurants with charities to reduce food waste and help those in need. The system allows restaurant managers to post available food items and charity organizations to place orders for these items.
+This project is a full-stack web application that connects restaurants, charity organizations, and admins to efficiently manage surplus food using blockchain for transparency, Node.js backend, MongoDB database, and EJS templates for the front-end.
 
-## Features
+The system allows restaurants to donate excess food, charities to request it, and the admin to verify users.
+Every food transaction is recorded on a custom blockchain, ensuring full traceability and trust.
 
-- User roles: Admin, Restaurant Manager, and Charity Manager
-- Account approval system
-- Food inventory management
-- Order placement and tracking
-- Real-time quantity updates
-- Responsive design
+⭐ Features
+👨‍🍳 For Restaurants
 
-## Prerequisites
+Register & login securely
 
-- Node.js (v14 or higher)
-- MongoDB
-- npm or yarn
+Add surplus food items
 
-## Installation
+Update or delete food listings
 
-1. Clone the repository:
-```bash
-git clone <repository-url>
-cd food-management-system
-```
+Track donation history
 
-2. Install dependencies:
-```bash
+View blockchain logs of donated food
+
+🏥 For Charities / NGOs
+
+Register & login
+
+View available food from restaurants
+
+Request food donations
+
+Track past requests
+
+Transparent donation history powered by blockchain
+
+🛡️ For Admin
+
+Approve or reject registration requests
+
+Manage all users
+
+Monitor food distributions
+
+View full blockchain ledger
+
+🔗 Blockchain Integration
+
+Custom blockchain implemented using JavaScript
+
+Each donation = new block
+
+Ensures integrity, immutability, and traceability
+
+🏗️ Tech Stack
+Layer	Technologies
+Frontend	EJS, HTML5, CSS3
+Backend	Node.js, Express.js
+Database	MongoDB, Mongoose
+Authentication	Passport.js, bcrypt
+Blockchain	Custom JS Blockchain
+Session Management	express-session
+Templating	EJS Views
+📂 Project Folder Structure
+Smart-food-waste-management-system/
+│
+├── config/             # Passport config, MongoDB connection
+├── middleware/         # Authentication middleware
+├── models/             # Mongoose DB schemas (User, FoodItem, Order)
+├── public/             # CSS, JS, images
+├── routes/             # All Express routes (auth, user, admin)
+├── views/              # Frontend EJS templates
+│
+├── app.js              # Main Express server
+├── blockchain.js       # Custom blockchain logic
+├── base.txt            # Sample blockchain base data
+├── package.json        # Project metadata & dependencies
+└── README.md           # Documentation
+
+⚙️ Installation & Setup
+1️⃣ Clone the repository
+git clone https://github.com/ashoksuravarapu31/smart-food-waste-management-system.git
+
+2️⃣ Install dependencies
 npm install
-```
 
-3. Create a `.env` file in the root directory with the following variables:
-```
-MONGODB_URI=your_mongodb_connection_string
-SESSION_SECRET=your_session_secret
+3️⃣ Create a .env file
+
+Example:
+
+MONGO_URI=mongodb://localhost:27017/foodmanagement
+SESSION_SECRET=yourSecretKey
 PORT=3000
-```
 
-4. Create an admin user in MongoDB:
-```javascript
-db.users.insertOne({
-    email: "admin@example.com",
-    password: "$2a$10$your_hashed_password", // Use bcrypt to hash the password
-    role: "admin",
-    approved: true,
-    name: "Admin User"
-})
-```
+4️⃣ Run the application
+npm start
 
-## Running the Application
 
-1. Start the development server:
-```bash
-npm run dev
-```
+or
 
-2. Open your browser and navigate to `http://localhost:3000`
+node app.js
 
-## Usage
+5️⃣ Open in browser
+http://localhost:3000
 
-### Admin
-- Login with admin credentials
-- View and approve/reject user registrations
-- Monitor system activity
+🔗 Blockchain Workflow
+Restaurant Donates Food
+        ↓
+System Creates a Block
+        ↓
+Block Contains:
+ - Food ID
+ - Donor ID
+ - Charity ID
+ - Timestamp
+ - Previous Hash
+ - Current Hash
+        ↓
+Block Added to Chain → Immutable record
 
-### Restaurant Manager
-1. Register as a restaurant manager
-2. Wait for admin approval
-3. Post available food items
-4. Manage inventory
-5. Accept/reject orders from charities
 
-### Charity Manager
-1. Register as a charity organization
-2. Wait for admin approval
-3. View available food items
-4. Place orders
-5. Track order status
+This ensures 100% transparency for food donations.
 
-## Technologies Used
+📸 Screenshots (Add yours here)
+Add images like:
+- Login page
+- Admin dashboard
+- Restaurant food upload page
+- Blockchain ledger view
+- Charity request page
 
-- Node.js
-- Express.js
-- MongoDB
-- EJS (Embedded JavaScript)
-- Bootstrap 5
-- Passport.js
-- bcryptjs
+🚀 Future Enhancements
 
-## Contributing
+Add email/SMS notification system
 
-1. Fork the repository
-2. Create your feature branch
-3. Commit your changes
-4. Push to the branch
-5. Create a new Pull Request
+Implement real-time food tracking
 
-## License
+Integrate live map for nearest restaurants
 
-This project is licensed under the MIT License - see the LICENSE file for details.
+AI-based food demand prediction
+
+Mobile app version
+
+👨‍💻 Developed By
+
+Ashok Suravarapu
+BCA-A VI Semester
+Guided by Dr. Abadhan Ranganath
+
+📜 License
+
+This project is open-source and available under the MIT License.
