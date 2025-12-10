@@ -1,17 +1,25 @@
-🚀 Smart Food Waste Management System
-A Blockchain-Integrated Solution to Reduce Food Waste & Support Charities
+📦 Smart Food Waste Management System
+🔗 A Blockchain-Integrated Platform to Reduce Food Waste & Support Charities
 
-This project is a full-stack web application that connects restaurants, charity organizations, and admins to efficiently manage surplus food using blockchain for transparency, Node.js backend, MongoDB database, and EJS templates for the front-end.
+This is a full-stack web application that connects restaurants, charities, and admins to redistribute surplus food efficiently.
+The system uses:
 
-The system allows restaurants to donate excess food, charities to request it, and the admin to verify users.
-Every food transaction is recorded on a custom blockchain, ensuring full traceability and trust.
+Blockchain for transparency
+
+Node.js + Express backend
+
+MongoDB database
+
+EJS templating for the frontend
+
+Each donation is saved as a block ensuring traceability & trust.
 
 ⭐ Features
 👨‍🍳 For Restaurants
 
 Register & login securely
 
-Add surplus food items
+Add surplus food
 
 Update or delete food listings
 
@@ -23,87 +31,72 @@ View blockchain logs of donated food
 
 Register & login
 
-View available food from restaurants
+View all available food
 
 Request food donations
 
-Track past requests
+Track request history
 
-Transparent donation history powered by blockchain
+Transparent donation logs powered by blockchain
 
 🛡️ For Admin
 
-Approve or reject registration requests
+Approve or reject restaurant/charity registrations
 
 Manage all users
 
-Monitor food distributions
+Monitor food donations
 
-View full blockchain ledger
+View complete blockchain ledger
 
-🔗 Blockchain Integration
-
-Custom blockchain implemented using JavaScript
-
-Each donation = new block
-
-Ensures integrity, immutability, and traceability
-
-🏗️ Tech Stack
+🧱 Tech Stack
 Layer	Technologies
-Frontend	EJS, HTML5, CSS3
+Frontend	HTML, CSS, EJS
 Backend	Node.js, Express.js
 Database	MongoDB, Mongoose
 Authentication	Passport.js, bcrypt
-Blockchain	Custom JS Blockchain
-Session Management	express-session
-Templating	EJS Views
-📂 Project Folder Structure
+Blockchain	Custom JavaScript blockchain
+Session	express-session
+📂 Project Structure
 Smart-food-waste-management-system/
 │
-├── config/             # Passport config, MongoDB connection
-├── middleware/         # Authentication middleware
-├── models/             # Mongoose DB schemas (User, FoodItem, Order)
-├── public/             # CSS, JS, images
-├── routes/             # All Express routes (auth, user, admin)
-├── views/              # Frontend EJS templates
+├── config/             # Authentication, DB config
+├── middleware/         # Auth middleware
+├── models/             # Mongoose models
+├── public/             # Frontend assets
+├── routes/             # Express routes
+├── views/              # EJS templates
 │
-├── app.js              # Main Express server
-├── blockchain.js       # Custom blockchain logic
-├── base.txt            # Sample blockchain base data
-├── package.json        # Project metadata & dependencies
-└── README.md           # Documentation
+├── app.js              # Main server
+├── blockchain.js       # Blockchain logic
+├── base.txt            # Blockchain data
+├── package.json        
+└── README.md           
 
-⚙️ Installation & Setup
-1️⃣ Clone the repository
+⚙️ Installation
+1️⃣ Clone Repository
 git clone https://github.com/ashoksuravarapu31/smart-food-waste-management-system.git
 
-2️⃣ Install dependencies
+2️⃣ Install Dependencies
 npm install
 
-3️⃣ Create a .env file
-
-Example:
-
-MONGO_URI=mongodb://localhost:27017/foodmanagement
-SESSION_SECRET=yourSecretKey
+3️⃣ Create .env File
+MONGO_URI=your_mongodb_url
+SESSION_SECRET=your_secret
 PORT=3000
 
-4️⃣ Run the application
+4️⃣ Start Server
 npm start
-
-
-or
-
+# or
 node app.js
 
-5️⃣ Open in browser
+5️⃣ Open in Browser
 http://localhost:3000
 
 🔗 Blockchain Workflow
 Restaurant Donates Food
         ↓
-System Creates a Block
+System Creates a New Block
         ↓
 Block Contains:
  - Food ID
@@ -113,37 +106,32 @@ Block Contains:
  - Previous Hash
  - Current Hash
         ↓
-Block Added to Chain → Immutable record
-
-
-This ensures 100% transparency for food donations.
+Block Added to Chain → Immutable Record
 
 📸 Screenshots (Add yours here)
-Add images like:
-- Login page
-- Admin dashboard
-- Restaurant food upload page
-- Blockchain ledger view
-- Charity request page
+
+You can upload images → copy link → add like:
+
+![Login Page](image-link-here)
 
 🚀 Future Enhancements
 
-Add email/SMS notification system
+Email/SMS notification
 
-Implement real-time food tracking
+Real-time tracking
 
-Integrate live map for nearest restaurants
+AI-based food spoilage detection
 
-AI-based food demand prediction
+Mobile app
 
-Mobile app version
+Location-based donation matching
 
 👨‍💻 Developed By
 
 Ashok Suravarapu
-BCA-A VI Semester
+BCA-A, VI Semester
 Guided by Dr. Abadhan Ranganath
 
-📜 License
+📄 License
 
-This project is open-source and available under the MIT License.
+MIT License
