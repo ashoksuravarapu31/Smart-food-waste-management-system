@@ -1,7 +1,8 @@
-📦 Smart Food Waste Management System
-🔗 A Blockchain-Integrated Platform to Reduce Food Waste & Support Charities
+# 🚀 Smart Food Waste Management System
+A Blockchain-Integrated Platform to Reduce Food Waste & Support Charities
 
 This is a full-stack web application that connects restaurants, charities, and admins to redistribute surplus food efficiently.
+
 The system uses:
 
 Blockchain for transparency
@@ -12,10 +13,10 @@ MongoDB database
 
 EJS templating for the frontend
 
-Each donation is saved as a block ensuring traceability & trust.
+Each donation is saved as a block, ensuring traceability and trust.
 
-⭐ Features
-👨‍🍳 For Restaurants
+## ⭐ Features
+### 👨‍🍳 For Restaurants
 
 Register & login securely
 
@@ -27,29 +28,29 @@ Track donation history
 
 View blockchain logs of donated food
 
-🏥 For Charities / NGOs
+### 🏥 For Charities / NGOs
 
 Register & login
 
-View all available food
+View available food
 
 Request food donations
 
 Track request history
 
-Transparent donation logs powered by blockchain
+Transparent donation history powered by blockchain
 
-🛡️ For Admin
+### 🛡️ For Admin
 
-Approve or reject restaurant/charity registrations
+Approve or reject registration requests
 
 Manage all users
 
-Monitor food donations
+Monitor food distributions
 
-View complete blockchain ledger
+View full blockchain ledger
 
-🧱 Tech Stack
+## 🧱 Tech Stack
 Layer	Technologies
 Frontend	HTML, CSS, EJS
 Backend	Node.js, Express.js
@@ -57,23 +58,23 @@ Database	MongoDB, Mongoose
 Authentication	Passport.js, bcrypt
 Blockchain	Custom JavaScript blockchain
 Session	express-session
-📂 Project Structure
+## 📂 Project Structure
 Smart-food-waste-management-system/
 │
-├── config/             # Authentication, DB config
-├── middleware/         # Auth middleware
-├── models/             # Mongoose models
-├── public/             # Frontend assets
-├── routes/             # Express routes
-├── views/              # EJS templates
+├── config/             
+├── middleware/         
+├── models/             
+├── public/             
+├── routes/             
+├── views/              
 │
-├── app.js              # Main server
-├── blockchain.js       # Blockchain logic
-├── base.txt            # Blockchain data
+├── app.js              
+├── blockchain.js       
+├── base.txt            
 ├── package.json        
 └── README.md           
 
-⚙️ Installation
+## ⚙️ Installation
 1️⃣ Clone Repository
 git clone https://github.com/ashoksuravarapu31/smart-food-waste-management-system.git
 
@@ -87,13 +88,11 @@ PORT=3000
 
 4️⃣ Start Server
 npm start
-# or
-node app.js
 
 5️⃣ Open in Browser
 http://localhost:3000
 
-🔗 Blockchain Workflow
+## 🔗 Blockchain Workflow
 Restaurant Donates Food
         ↓
 System Creates a New Block
@@ -108,17 +107,11 @@ Block Contains:
         ↓
 Block Added to Chain → Immutable Record
 
-📸 Screenshots (Add yours here)
+## 🚀 Future Enhancements
 
-You can upload images → copy link → add like:
+Email/SMS notifications
 
-![Login Page](image-link-here)
-
-🚀 Future Enhancements
-
-Email/SMS notification
-
-Real-time tracking
+Real-time food tracking
 
 AI-based food spoilage detection
 
@@ -126,12 +119,12 @@ Mobile app
 
 Location-based donation matching
 
-👨‍💻 Developed By
+## 👨‍💻 Developed By
 
 Ashok Suravarapu
 BCA-A, VI Semester
 Guided by Dr. Abadhan Ranganath
 
-📄 License
+## 📄 License
 
 MIT License
